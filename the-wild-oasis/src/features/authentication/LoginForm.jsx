@@ -4,7 +4,7 @@ import Form from "../../ui/Form";
 import Input from "../../ui/Input";
 import FormRowVertical from "../../ui/FormRowVertical";
 
-function LoginForm() {
+function LoginForm({children}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,6 +21,7 @@ function LoginForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        {children}
       </FormRowVertical>
       <FormRowVertical label="Password">
         <Input
