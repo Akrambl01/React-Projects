@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import Calculator from "./Calculator";
 import ToggleSounds from "./ToggleSounds";
 
+
 function formatTime(date) {
   return new Intl.DateTimeFormat("en", {
     month: "short",
