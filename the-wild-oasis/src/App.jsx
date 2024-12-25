@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
 import GlobalStyles from "./styles/GlobalStyles";
 import AppLayout from "./ui/AppLayout";
+import NewUsers from "./pages/Users";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="cabins" element={<Cabins />} />
             <Route path="settings" element={<Settings />} />
             <Route path="account" element={<Account />} />
+            <Route path="users" element={<NewUsers />} />
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="*" element={<PageNotFound />} />
