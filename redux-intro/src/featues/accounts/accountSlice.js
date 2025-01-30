@@ -19,9 +19,9 @@ const accountSlice = createSlice({
       state.balance -= action.payload;
     },
     requestLoan: {
-      prepare(amount, pupose) {
+      prepare(amount, purpose) {
         return {
-          payload: { amount, pupose },
+          payload: { amount, purpose },
         };
       },
 
@@ -29,7 +29,7 @@ const accountSlice = createSlice({
         if (state.loan > 0) return;
 
         state.loan = action.payload.amount;
-        state.loanPurpose = action.payload.pupose;
+        state.loanPurpose = action.payload.purpose;
         state.balance = state.balance + action.payload.amount;
       },
     },
@@ -39,7 +39,7 @@ const accountSlice = createSlice({
       state.loanPurpose = "";
     },
   },
-  convetingCurrency(state) {
+  convertingCurrency(state) {
     state.isLoading = true;
   },
 });
@@ -48,7 +48,7 @@ export function deposit(amount, currency) {
   if (currency === "USD") return { type: "account/deposit", payload: amount };
 
   return async function (dispatch, getState) {
-    dispatch({ type: "account/convetingCurrency" });
+    dispatch({ type: "account/convertingCurrency" });
 
     // Api call
     const res = await fetch(
@@ -93,7 +93,7 @@ export default function accountReducer(state = initialState, action) {
         loanPurpose: "",
         balance: state.balance - state.loan,
       };
-    case "account/convetingCurrency":
+    case "account/convertingCurrency":
       return {
         ...state,
         isLoading: true,
@@ -108,7 +108,7 @@ export function deposit(amount, currency) {
   if (currency === "USD") return { type: "account/deposit", payload: amount };
 
   return async function (dispatch, getState) {
-    dispatch({ type: "account/convetingCurrency" });
+    dispatch({ type: "account/convertingCurrency" });
 
     // Api call
     const res = await fetch(
@@ -126,10 +126,10 @@ export function withdraw(amount) {
   return { type: "account/withdraw", payload: amount };
 }
 
-export function requestLoan(amount, pupose) {
+export function requestLoan(amount, purpose) {
   return {
     type: "account/requestLoan",
-    payload: { amount, pupose },
+    payload: { amount, purpose },
   };
 }
 
