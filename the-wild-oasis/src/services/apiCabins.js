@@ -12,7 +12,7 @@ export async function getCabins() {
 export async function createCabin(newCabin) {
   // 1. Create a new cabin
   const { data, error } = await supabase
-    .from("cabins")
+    .from("cabin s")
     .insert([newCabin])
     .select();
   if (error) {
